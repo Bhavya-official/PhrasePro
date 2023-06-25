@@ -60,7 +60,7 @@ const Home = () => {
         let obj = JSON.parse(localStorage.getItem("key"));
         const time_spend = (new Date().getTime() - obj?.timestamp) /1000;
         if (obj === null ||  time_spend > 3600) {
-            return axios.post(`https://developer.expert.ai/oauth2/token/`, {
+            return @Crossorigin axios.post(`https://developer.expert.ai/oauth2/token/`, {
                 "username": process.env.USERNAME,
                 "password": process.env.PASSWORD
             }, {
@@ -88,6 +88,7 @@ const Home = () => {
         if (match && match[2].length === 11) {
             setVideoId(match[2]);
             setLoader(true);
+            @Crossorigin
             axios.get(`https://ytb-api.azurewebsites.net/api/ytb-t01?video_id=${match[2]}`)
                 .then(async res => {
                     setLoader(false)
@@ -128,7 +129,7 @@ const Home = () => {
                 "Authorization": t,
                 "Content-Type": "application/json; charset=utf-8"
             }
-            return axios.post(`${baseURL}/v2/analyze/standard/${language}/relevants`, payload, {headers: headers})
+            return @Crossorigin axios.post(`${baseURL}/v2/analyze/standard/${language}/relevants`, payload, {headers: headers})
                 .then(res => {
                     return res.data['data'];
                 }).catch(err => console.log(err));
@@ -150,6 +151,7 @@ const Home = () => {
                 "Authorization": t,
                 "Content-Type": "application/json; charset=utf-8"
             }
+            @Crossorigin
             axios.post(`${baseURL}/v2/analyze/standard/${language}/entities`, payload, {headers: headers})
                 .then(res => {
                     setKnLoader(false);
