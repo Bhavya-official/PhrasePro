@@ -88,12 +88,7 @@ const Home = () => {
         if (match && match[2].length === 11) {
             setVideoId(match[2]);
             setLoader(true);
-            axios.get(`https://ytb-api.azurewebsites.net/api/ytb-t01?video_id=${match[2]}/.json`, {
-             headers: {
-                "Access-Control-Allow-Origin" : "*",
-                "Access-Control-Allow-Methods": "GET,HEAD,OPTIONS,POST,PUT",
-                "Access-Control-Allow-Headers": "Origin, X-Requested-With, Content-Type, Accept, x-client-key, x-client-token, x-client-secret, Authorization"
-            } })
+            axios.get(`https://ytube-api.onrender.com?video_id=${match[2]}`)
                 .then(async res => {
                     setLoader(false)
                     const tempTranscript = punctuator.punctuate(res.data.summary);
