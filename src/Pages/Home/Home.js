@@ -60,7 +60,7 @@ const Home = () => {
         let obj = JSON.parse(localStorage.getItem("key"));
         const time_spend = (new Date().getTime() - obj?.timestamp) /1000;
         if (obj === null ||  time_spend > 3600) {
-            return axios.post(`https://developer.expert.ai/oauth2/token/`, data={
+            return axios.post(`https://developer.expert.ai/oauth2/token/`, {
                 username: process.env.USERNAME,
                 password: process.env.PASSWORD
             }, {
