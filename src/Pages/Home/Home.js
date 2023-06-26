@@ -61,7 +61,7 @@ const Home = () => {
         const time_spend = (new Date().getTime() - obj?.timestamp) /1000;
         if (obj === null ||  time_spend > 3600) {
             return axios.post(`https://developer.expert.ai/oauth2/token/`, {
-                "username": "bhbhb",
+                "username": process.env.NEXT_PUBLIC_USERNAME,
                 "password": process.env.PASSWORD
             }, {
                 headers: {
