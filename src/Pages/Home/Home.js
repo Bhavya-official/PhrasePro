@@ -16,7 +16,7 @@ const _ = require('lodash');
 const punctuator = require('punctuator');
 const pos = require('pos');
 
-
+console.log(process.env)
 const Home = () => {
 
     const [token, setToken] = React.useState("");
